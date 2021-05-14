@@ -42,7 +42,11 @@ eg:
   become_exe: 'sudo su -'
 ```
 
-The above playbook will install python version 3.4.3.
+The below example will install python version 3.6.2.
+```
+ansible-playbook -i inventories/hosts.yml python-install.yml -e "pyfsrc_version=3.5.2,
+pyfsrc_make_default=yes,pyfsrc_ssl_support=yes,pyfsrc_install_pip=yes"
+```
 
 The role can be used multiple times with different value of
 `pyfsrc_version` to install different versions. This can be useful for
