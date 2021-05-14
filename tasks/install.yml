@@ -25,7 +25,7 @@
     - sqlite
     - sqlite-devel
 
-- name: Setup.dist - enable ssl python module 
+- name: Setup.dist - enable ssl python module
   lineinfile:
     dest: "{{ pyfsrc_src_dir_path }}/Modules/Setup.dist"
     regexp: '^#SSL.*$'
@@ -47,14 +47,12 @@
   args:
     chdir: "{{ pyfsrc_src_dir_path }}"
   when: pyfsrc_make_default
-  sudo: yes
 
 - name: Run make altinstall
   command: make altinstall
   args:
     chdir: "{{ pyfsrc_src_dir_path }}"
   when: not pyfsrc_make_default
-  sudo: yes
 
 - name: Download get-pip
   get_url: url="https://bootstrap.pypa.io/get-pip.py" dest="{{ pyfsrc_download_dir }}"
